@@ -15,6 +15,13 @@ public class Developer extends Person {
         this.skills = skills;
     }
 
+    public void initDev(int ID, String company, int bonus, ArrayList<String> skills) {
+        this.ID = ID;
+        this.company = company;
+        this.bonus = bonus;
+        this.skills = skills;
+    }
+
     public ArrayList<String> getSkills() {
         return skills;
     }
