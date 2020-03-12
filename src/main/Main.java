@@ -54,3 +54,124 @@ public class Main {
     }
 
 }
+
+
+package main;
+
+import java.io.FileWriter;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class Main {
+    static class Pair {
+        public int x;
+        public int y;
+
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static Person getFistAvailable(char type, List<Manager> managers, List<Developer> developers) {
+        if (type == '_') {
+            for (int i = 0; i < developers.size(); ++i) {
+                if (!developers.get(i).isUsed()) {
+                    return developers.get(i);
+                }
+            }
+        } else {
+            for (int i = 0; i < managers.size(); ++i) {
+                if (!managers.get(i).isUsed()) {
+                    return managers.get(i);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+
+        List<Manager> managers = null;
+        List<Developer> developers = null;
+
+        Office office = Office.getInstance();
+
+        int nrDevsNeed = office.getNrDevelopers();
+        int nrMngsNeed = office.getNrManagers();
+        int n = office.getN();
+        int m = office.getM();
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                if (!office.isBusy(i, j)) {
+                    Queue<Person> people = new LinkedList<Person>();
+                    Person firstPerson = getFistAvailable(office.getPositionType(i, j), managers, developers);
+
+                    if (firstPerson == null) {
+                        continue;
+                    }
+
+                    firstPerson.setX(i);
+                    firstPerson.setY(j);
+                    firstPerson.setUsed(true);
+
+                    people.add(firstPerson);
+
+                    while (!people.isEmpty()) {
+                        Person person = people.peek();
+                        office.placePerson(person, person.getX(), person.getY());
+                        people.remove();
+
+                        int coordX[] = {0, 0, 1, -1};
+                        int coordY[] = {1, -1, 0, 0};
+
+                        for (int k = 0; k <= 3; ++k) {
+                            if (!office.isBusy(person.getX() + coordX[k], person.getY() + coordY[k])) {
+                                Person bestPerson = null;
+                                if (office.getPositionType(person.getX() + coordX[k], person.getY() + coordY[k]) == '_') {
+                                    bestPerson = person.getBest(developers);
+                                } else if (office.getPositionType(person.getX() + coordX[k], person.getY() + coordY[k]) == 'M') {
+                                    bestPerson = person.getBest(managers);
+                                }
+
+                                if (bestPerson != null) {
+                                    bestPerson.setX(person.getX() + coordX[k]);
+                                    bestPerson.setY(person.getY() + coordY[k]);
+                                    bestPerson.setUsed(true);
+                                    people.add(bestPerson);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        try {
+            FileWriter fileWriter = new FileWriter("File");
+            for (int i = 0; i < developers.size(); ++i) {
+                if (developers.get(i).isUsed()) {
+                    fileWriter.write(developers.get(i).getX() + " " + developers.get(i).getY());
+                } else {
+                    fileWriter.write("X");
+                }
+            }
+
+            for (int i = 0; i < managers.size(); ++i) {
+                if (managers.get(i).isUsed()) {
+                    fileWriter.write(managers.get(i).getX() + " " + managers.get(i).getY());
+                } else {
+                    fileWriter.write("X");
+                }
+            }
+
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
