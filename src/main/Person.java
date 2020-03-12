@@ -12,7 +12,7 @@ public abstract class Person {
     int y;
     ArrayList<String> skills;
     
-    public Person getBest(ArrayList<Person> people) {
+    public Person getBest(List<Person> people) {
         Person best = null;
         int score = 0;
 
