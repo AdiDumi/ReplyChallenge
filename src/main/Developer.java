@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Developer extends Person {
+<<<<<<< HEAD
     public Developer() {
         used = false;
+=======
+
+    public Developer() {  used = false;
+>>>>>>> 10347daa42d91e9b3bf4ee50386a6363b0f18764
     }
 
     public Developer(ArrayList<String> skills) {

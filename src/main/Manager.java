@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Manager extends Person {
     public Manager() {
-        isUsed = false;
+        used = false;
+        this.skills = null;
     }
 
 

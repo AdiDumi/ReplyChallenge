@@ -12,6 +12,17 @@ public abstract class Person {
     int x;
     int y;
     ArrayList<String> skills;
+<<<<<<< HEAD
+=======
+
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
+    }
+>>>>>>> 10347daa42d91e9b3bf4ee50386a6363b0f18764
 
     public boolean isUsed() {
         return used;
@@ -77,28 +88,7 @@ public abstract class Person {
 
     public abstract int workPotential(Person p);
 
-    public Person getBest(ArrayList<Person> people) {
-        Person best = null;
-        int score = 0;
 
-        for (Person p : people) {
-            if (this.skills == null || p.skills == null) {
-                // manager + manager || manager + dev
-                int newScore = bonusPotential(p);
-                if (newScore > score) {
-                    score = newScore;
-                    best = p;
-                }
-            } else { // dev + dev
-                int newScore = bonusPotential(p) + workPotential(p);
-                if (newScore > score) {
-                    score = newScore;
-                    best = p;
-                }
-            }
-        }
-        return best;
-    }
 
 
 
