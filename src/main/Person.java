@@ -1,6 +1,17 @@
-public class Person {
+package main;
+
+abstract class Person {
+    int ID;
     String company;
     int bonus;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getCompany() {
         return company;
@@ -17,4 +28,6 @@ public class Person {
     public void setBonus(int bonus) {
         this.bonus = bonus;
     }
+
+    // abstract void workPotential(Person p2);
 }
