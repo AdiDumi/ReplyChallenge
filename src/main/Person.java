@@ -21,6 +21,10 @@ public class Person {
     }
 
     public int bonusPotential(Person employee) {
-        return (this.getBonus() * employee.getBonus());
+        if (this.getCompany().equals(employee.getCompany())) {
+            return (this.getBonus() * employee.getBonus());
+        } else {
+            return 0;
+        }
     }
 }
