@@ -4,101 +4,93 @@ import java.util.List;
 
 public class GameInput {
 
-    private final List<String> mallAngels;
-    private final List<Integer> minitAngels;
-    private final List<Integer> mnrAngels;
+    private final List<String> mallOffice;
+    private final List<Integer> mallDevNrSkill;
+    private final List<Integer> mallDevBonus;
     private final int rows;
     private final int columns;
-    private final List<String> mTerrains;
-    private final List<Integer> initPosition;
-    private final int nrPlayers;
-    private final List<String> mPlayersOrder;
-    private int mRounds;
-    private final List<String> mMoves;
+    private final List<String> mallDevCompany;
+    private final List<Integer> mallPMBonus;
+    private final int nrDev;
+    private final List<String> mallPMCompany;
+    private final int nrPM;
+    private final List<String> mallDevSkill;
 
     public GameInput() {
         rows = 0;
         columns = 0;
-        nrPlayers = 0;
-        mTerrains = null;
-        mPlayersOrder = null;
-        initPosition = null;
-        mMoves = null;
-        mRounds = 0;
-        mallAngels = null;
-        minitAngels = null;
-        mnrAngels = null;
+        nrDev = 0;
+        mallOffice = null;
+        mallDevBonus= null;
+        mallDevCompany = null;
+        mallDevNrSkill = null;
+        nrPM = 0;
+        mallPMBonus= null;
+        mallPMCompany = null;
+        mallDevSkill = null;
     }
 
-    public GameInput(final int rounds, final int rows, final int columns, final int nrPlayers,
-                     final List<String> assets, final List<String> players,
-                     final List<String> moves, final List<Integer> positions,
-                     final List<String> allAngels,  final List<Integer> initAngels,
-                     final List<Integer> nrAngels) {
-        mTerrains = assets;
-        mPlayersOrder = players;
-        mRounds = rounds;
+    public GameInput(final int rows, final int columns, final int nrDev, final int nrPM,
+                     final List<String> allOffice, final List<String> allDevCompany,
+                     final List<String> allDevSkill, final List<Integer> allDevBonus,
+                     final List<Integer> allDevNrSkill,  final List<Integer> allPMBonus,
+                     final List<String> allPMCompany) {
+
+        mallDevSkill = allDevSkill;
+        mallPMBonus = allPMBonus;
         this.rows = rows;
         this.columns = columns;
-        this.nrPlayers = nrPlayers;
-        mMoves = moves;
-        initPosition = positions;
-        mallAngels = allAngels;
-        minitAngels = initAngels;
-        mnrAngels = nrAngels;
+        this.nrDev = nrDev;
+        this.nrPM = nrPM;
+        mallDevNrSkill = allDevNrSkill;
+        mallOffice = allOffice;
+        mallDevCompany = allDevCompany;
+        mallDevBonus = allDevBonus;
+        mallPMCompany = allPMCompany;
     }
 
-    public final List<Integer> getInitPosition() {
-        return initPosition;
+    public List<String> getMallOffice() {
+        return mallOffice;
     }
 
-    public final List<String> getTerrains() {
-        return mTerrains;
+    public List<Integer> getMallDevNrSkill() {
+        return mallDevNrSkill;
     }
 
-    public final List<String> getPlayerNames() {
-        return mPlayersOrder;
+    public List<Integer> getMallDevBonus() {
+        return mallDevBonus;
     }
 
-    public final List<String>  getMoves() {
-        return  mMoves;
-    }
-
-    public final int getRounds() {
-        return mRounds;
-    }
-
-    public final int getNrPlayers() {
-        return nrPlayers;
-    }
-
-    public final int getRows() {
+    public int getRows() {
         return rows;
     }
 
-    public final int getColumns() {
+    public int getColumns() {
         return columns;
     }
 
-    public final List<String> getAllAngels() {
-        return mallAngels;
+    public List<String> getMallDevCompany() {
+        return mallDevCompany;
     }
 
-    public final List<Integer> getInitAngels() {
-        return minitAngels;
+    public List<Integer> getMallPMBonus() {
+        return mallPMBonus;
     }
 
-    public final List<Integer> getNrAngels() {
-        return mnrAngels;
+    public int getNrDev() {
+        return nrDev;
     }
 
-    public final boolean isValidInput() {
-        boolean membersInstantiated = mTerrains != null && mPlayersOrder != null && mMoves != null
-                && initPosition != null;
-        boolean listsNotEmpty = mTerrains.size() > 0 && mPlayersOrder.size() > 0
-                && mMoves.size() > 0 && initPosition.size() > 0 && mallAngels.size() > 0
-                && minitAngels.size() > 0 && mnrAngels.size() > 0;
-        boolean numbersNotEmpty = rows > 0 && columns > 0 && nrPlayers > 0 && mRounds > 0;
-        return membersInstantiated && listsNotEmpty && numbersNotEmpty;
+    public List<String> getMallPMCompany() {
+        return mallPMCompany;
     }
+
+    public int getNrPM() {
+        return nrPM;
+    }
+
+    public List<String> getMallDevSkill() {
+        return mallDevSkill;
+    }
+
 }
