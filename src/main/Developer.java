@@ -5,13 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Developer extends Person {
-<<<<<<< HEAD
     public Developer() {
         used = false;
-=======
-
-    public Developer() {  used = false;
->>>>>>> 10347daa42d91e9b3bf4ee50386a6363b0f18764
+        this.skills = skills;
     }
 
     public Developer(ArrayList<String> skills) {
@@ -30,28 +26,9 @@ public class Developer extends Person {
 
     }
 
-    public ArrayList<String> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(ArrayList<String> skills) {
-        this.skills = skills;
-    }
-
-
     public int workPotential(Person dev) {
         ArrayList<String> union = (ArrayList<String>) Common.union(this.getSkills(), dev.getSkills());
         ArrayList<String> intersection = (ArrayList<String>) Common.intersection(this.getSkills(), dev.getSkills());
-
-        System.out.println("EXCLUSIVE UNION IS");
-        for (String s : union) {
-            System.out.println(s);
-        }
-
-        System.out.println("INTERSECTION IS");
-        for (String s : intersection) {
-            System.out.println(s);
-        }
 
         return intersection.size() * (union.size() - intersection.size());
     }

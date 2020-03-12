@@ -1,7 +1,6 @@
 package main;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public abstract class Person {
@@ -18,14 +17,7 @@ public abstract class Person {
         int score = 0;
 
         for (Person p : people) {
-            if (this.skills == null || p.skills == null) {
-                // manager + manager || manager + dev
-                int newScore = bonusPotential(p);
-                if (newScore > score) {
-                    score = newScore;
-                    best = p;
-                }
-            } else { // dev + dev
+            if (!p.isUsed()) {
                 int newScore = bonusPotential(p) + workPotential(p);
                 if (newScore > score) {
                     score = newScore;
@@ -35,6 +27,8 @@ public abstract class Person {
         }
         return best;
     }
+
+    public abstract int workPotential(Person p);
 
     public ArrayList<String> getSkills() {
         return skills;
@@ -92,8 +86,6 @@ public abstract class Person {
         this.bonus = bonus;
     }
 
-    protected abstract ArrayList<String> getSkills();
-
     public int bonusPotential(Person employee) {
         if (this.getCompany().equals(employee.getCompany())) {
             return (this.getBonus() * employee.getBonus());
@@ -105,11 +97,4 @@ public abstract class Person {
     public abstract void initDev(int i, String s, Integer integer, ArrayList<String> devSkills);
 
     public abstract void initMan(int i, String s, Integer integer);
-
-    public abstract int workPotential(Person p);
-
-
-
-
-
 }

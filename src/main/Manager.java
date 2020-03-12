@@ -8,6 +8,9 @@ public class Manager extends Person {
         this.skills = null;
     }
 
+    public int workPotential(Person p) {
+        return 0;
+    }
 
     public void initMan(int ID, String company, Integer bonus) {
         this.ID = ID;
