@@ -18,19 +18,17 @@ public final class GameInputLoader {
         /*
         initializez variabilele unde urmeaza sa stochez datele de intrare
          */
-        List<String> allTerrains = new ArrayList<>();
-        List<String> playerOrder = new ArrayList<>();
-        List<String> allMoves = new ArrayList<>();
-        List<Integer> allPositions = new ArrayList<>();
-        List<Integer> nrAngels = new ArrayList<>();
-        List<String> allAngels = new ArrayList<>();
-        List<Integer> initAngels = new ArrayList<>();
-        int rounds = 0;
-        int nrPlayers = 0;
-        int rows = 0;
+        List<String> allOffice = new ArrayList<>();
+        List<String> allDevCompany = new ArrayList<>();
+        List<String> allDevSkills = new ArrayList<>();
+        List<Integer> allPMBonus = new ArrayList<>();
+        List<Integer> allDevBonus = new ArrayList<>();
+        List<String> allPMCompany = new ArrayList<>();
+        List<Integer> allDevNrSkill = new ArrayList<>();
+        int nrDev = 0;
         int columns = 0;
-        String angel;
-        int len;
+        int nrPM = 0;
+        int rows = 0;
 
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
@@ -39,41 +37,26 @@ public final class GameInputLoader {
             columns = fs.nextInt();
 
             for (int i = 0; i < rows; ++i) {
-                allTerrains.add(fs.nextWord());
+                allOffice.add(fs.nextWord());
             }
 
 
-            nrPlayers = fs.nextInt();
+            nrDev = fs.nextInt();
 
-            for (int i = 0; i < nrPlayers; ++i) {
-                playerOrder.add(fs.nextWord());
-                allPositions.add(fs.nextInt());
-                allPositions.add(fs.nextInt());
-            }
-
-            rounds = fs.nextInt();
-
-            int j;
-            for (int i = 0; i < rounds; ++i) {
-                allMoves.add(fs.nextWord());
-            }
-
-            for (int i = 0; i < rounds; ++i) {
-                j = fs.nextInt();
-                if (j == 0) {
-                    nrAngels.add(0);
-                } else {
-                    nrAngels.add(j);
-                    for (int k = 0; k < j; ++k) {
-                        angel = fs.nextWord();
-                        len = angel.length();
-                        initAngels.add(Integer.parseInt((angel.substring(len
-                                - 3, len - 2)).trim()));
-                        initAngels.add(Integer.parseInt((angel.substring(len
-                                - 1, len)).trim()));
-                        allAngels.add(angel.substring(0, len - 4));
-                    }
+            for (int i = 0; i < nrDev; ++i) {
+                allDevCompany.add(fs.nextWord());
+                allDevBonus.add(fs.nextInt());
+                allDevNrSkill.add(fs.nextInt());
+                for (int j = 0; j < allDevNrSkill.get(i); ++i) {
+                    allDevSkills.add(fs.nextWord());
                 }
+            }
+
+            nrPM = fs.nextInt();
+
+            for (int i = 0; i < nrPM; ++i) {
+                allPMCompany.add(fs.nextWord());
+                allPMBonus.add(fs.nextInt());
             }
             fs.close();
 
@@ -81,7 +64,6 @@ public final class GameInputLoader {
             e1.printStackTrace();
         }
 
-        return new GameInput(rounds, rows, columns, nrPlayers,
-                allTerrains, playerOrder, allMoves, allPositions, allAngels, initAngels, nrAngels);
+        return new GameInput(rows, columns, nrDev, nrPM, allOffice, allDevCompany, allDevSkills, allDevBonus, allDevNrSkill, allPMBonus, allPMCompany);
     }
 }
