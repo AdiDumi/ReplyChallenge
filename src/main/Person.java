@@ -12,8 +12,6 @@ public abstract class Person {
     int x;
     int y;
     ArrayList<String> skills;
-<<<<<<< HEAD
-=======
 
     public ArrayList<String> getSkills() {
         return skills;
@@ -22,7 +20,6 @@ public abstract class Person {
     public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
     }
->>>>>>> 10347daa42d91e9b3bf4ee50386a6363b0f18764
 
     public boolean isUsed() {
         return used;
