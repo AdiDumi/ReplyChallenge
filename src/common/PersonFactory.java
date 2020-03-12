@@ -5,7 +5,7 @@ import main.Manager;
 import main.Person;
 
 public class PersonFactory {
-    public Person getPerson(String persType) {
+    public static Person getPerson(String persType) {
         switch (persType) {
             case "dev":
                 return new Developer();

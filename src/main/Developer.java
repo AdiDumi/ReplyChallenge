@@ -2,6 +2,7 @@ package main;
 
 import common.Common;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Developer extends Person {
     ArrayList<String> skills;
@@ -15,11 +16,15 @@ public class Developer extends Person {
         this.skills = skills;
     }
 
-    public void initDev(int ID, String company, int bonus, ArrayList<String> skills) {
+    public void initDev(int ID, String company, Integer bonus, ArrayList<String> skills) {
         this.ID = ID;
         this.company = company;
         this.bonus = bonus;
         this.skills = skills;
+    }
+
+    public void initMan(int ID, String company, Integer bonus){
+
     }
 
     public ArrayList<String> getSkills() {

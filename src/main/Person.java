@@ -1,6 +1,8 @@
 package main;
 
 
+import java.util.ArrayList;
+
 public abstract class Person {
     int ID;
     String company;
@@ -38,4 +40,8 @@ public abstract class Person {
             return 0;
         }
     }
+
+    public abstract void initDev(int i, String s, Integer integer, ArrayList<String> devSkills);
+
+    public abstract void initMan(int i, String s, Integer integer);
 }
