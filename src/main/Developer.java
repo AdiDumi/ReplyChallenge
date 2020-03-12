@@ -1,16 +1,17 @@
 package main;
 
-<<<<<<< HEAD
 import common.Common;
-
-=======
->>>>>>> fc327079bed5ecb3d961d4ea64ff1a7225af308c
 import java.util.ArrayList;
 
 public class Developer extends Person {
     ArrayList<String> skills;
 
-    Developer(ArrayList<String> skills) {
+    public Developer() {
+        isUsed = false;
+    }
+
+    public Developer(ArrayList<String> skills) {
+        isUsed = false;
         this.skills = skills;
     }
 
