@@ -1,7 +1,10 @@
 package main;
 
+<<<<<<< HEAD
 import common.Common;
 
+=======
+>>>>>>> fc327079bed5ecb3d961d4ea64ff1a7225af308c
 import java.util.ArrayList;
 
 public class Developer extends Person {
