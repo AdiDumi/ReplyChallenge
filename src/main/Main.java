@@ -4,11 +4,45 @@ import common.PersonFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.FileWriter;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Main {
-    public static void main(String[] args) {
+    static class Pair {
+        public int x;
+        public int y;
 
-        GameInputLoader gameInputLoader = new GameInputLoader(args[0], args[1]);
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static Person getFistAvailable(char type, List<Person> managers, List<Person> developers) {
+        if (type == '_') {
+            for (int i = 0; i < developers.size(); ++i) {
+                if (!developers.get(i).isUsed()) {
+                    return developers.get(i);
+                }
+            }
+        } else {
+            for (int i = 0; i < managers.size(); ++i) {
+                if (!managers.get(i).isUsed()) {
+                    return managers.get(i);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        String in, out;
+        in = "/home/adi/Documents/ReplyChallenge/in/a_solar.txt";
+        out = "/home/adi/Documents/ReplyChallenge/out.txt";
+        GameInputLoader gameInputLoader = new GameInputLoader(in, out);
         GameInput gameInput = gameInputLoader.load();
 
         List<Person> allDevs = new ArrayList<>();
@@ -37,11 +71,11 @@ public class Main {
             office.addLine(allOffice.get(i));
         }
 
-        int k = 0;
+        int l = 0;
         for (int i = 0; i < nrDevs; ++i) {
             allDevs.add(PersonFactory.getPerson("dev"));
             for (int j = 0; j < allDevNrSkill.get(i); ++i) {
-                devSkills.add(allDevSkills.get(k));
+                devSkills.add(allDevSkills.get(l));
             }
             allDevs.get(i).initDev(i, allDevCompany.get(i), allDevBonus.get(i), devSkills);
             devSkills.clear();
@@ -51,53 +85,9 @@ public class Main {
             allPMs.add(PersonFactory.getPerson("man"));
             allPMs.get(i).initMan(i, allPMCompany.get(i), allPMBonus.get(i));
         }
-    }
 
-}
-
-
-package main;
-
-import java.io.FileWriter;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-
-public class Main {
-    static class Pair {
-        public int x;
-        public int y;
-
-        public Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    static Person getFistAvailable(char type, List<Manager> managers, List<Developer> developers) {
-        if (type == '_') {
-            for (int i = 0; i < developers.size(); ++i) {
-                if (!developers.get(i).isUsed()) {
-                    return developers.get(i);
-                }
-            }
-        } else {
-            for (int i = 0; i < managers.size(); ++i) {
-                if (!managers.get(i).isUsed()) {
-                    return managers.get(i);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    public static void main(String[] args) {
-
-        List<Manager> managers = null;
-        List<Developer> developers = null;
-
-        Office office = Office.getInstance();
+        List<Person> managers = allPMs;
+        List<Person> developers = allDevs;
 
         int nrDevsNeed = office.getNrDevelopers();
         int nrMngsNeed = office.getNrManagers();
@@ -151,7 +141,7 @@ public class Main {
         }
 
         try {
-            FileWriter fileWriter = new FileWriter("File");
+            FileWriter fileWriter = new FileWriter(out);
             for (int i = 0; i < developers.size(); ++i) {
                 if (developers.get(i).isUsed()) {
                     fileWriter.write(developers.get(i).getX() + " " + developers.get(i).getY());
@@ -173,5 +163,5 @@ public class Main {
             e.printStackTrace();
         }
     }
-}
 
+}
