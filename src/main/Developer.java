@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Developer extends Person {
-    ArrayList<String> skills;
-
     public Developer() {
-        isUsed = false;
+        used = false;
     }
 
     public Developer(ArrayList<String> skills) {
-        isUsed = false;
+        used = false;
         this.skills = skills;
     }
 
@@ -36,7 +34,7 @@ public class Developer extends Person {
     }
 
 
-    public int workPotential(Developer dev) {
+    public int workPotential(Person dev) {
         ArrayList<String> union = (ArrayList<String>) Common.union(this.getSkills(), dev.getSkills());
         ArrayList<String> intersection = (ArrayList<String>) Common.intersection(this.getSkills(), dev.getSkills());
 
