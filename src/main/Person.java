@@ -7,10 +7,36 @@ public abstract class Person {
     int ID;
     String company;
     int bonus;
-    Boolean isUsed;
+    boolean used;
+    int x;
+    int y;
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
+    }
 
     public int getID() {
         return ID;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void setID(int ID) {

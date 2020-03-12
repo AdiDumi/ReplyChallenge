@@ -16,7 +16,7 @@ public class Main {
         int nrDevs, nrPMs;
         nrDevs = gameInput.getNrDev();
         nrPMs = gameInput.getNrPM();
-        List<String> allOffice = new ArrayList<>();
+        List<String> allOffice = gameInput.getMallOffice();
         List<String> allDevCompany;
         List<String> allDevSkills;
         List<Integer> allPMBonus;
@@ -31,6 +31,11 @@ public class Main {
         allPMCompany = gameInput.getMallPMCompany();
         allPMBonus = gameInput.getMallPMBonus();
 
+
+        Office office = Office.getInstance(gameInput.getRows(), gameInput.getColumns());
+        for (int i = 0; i < gameInput.getRows(); ++i) {
+            office.addLine(allOffice.get(i));
+        }
 
         int k = 0;
         for (int i = 0; i < nrDevs; ++i) {
