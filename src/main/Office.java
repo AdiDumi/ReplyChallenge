@@ -38,6 +38,7 @@ public class Office  {
         if (instance == null) {
             instance = new Office(0, 0);
         }
+        int pula;
         return instance;
     }
 
@@ -104,6 +105,14 @@ public class Office  {
     }
 
     public boolean isBusy(int x, int y) {
+        if (x >= n || y >= m || x < 0 || y < 0) {
+            return true;
+        }
+
         return matrix.get(x).get(y) == '#' || matrixPerson != null;
+    }
+
+    public void placePerson(Person person, int x, int y) {
+        matrixPerson[x][y] = person;
     }
 }
