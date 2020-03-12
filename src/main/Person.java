@@ -10,6 +10,15 @@ public abstract class Person {
     boolean used;
     int x;
     int y;
+    ArrayList<String> skills;
+
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
+    }
 
     public boolean isUsed() {
         return used;

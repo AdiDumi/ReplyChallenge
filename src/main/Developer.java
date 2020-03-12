@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Developer extends Person {
-    ArrayList<String> skills;
 
-    public Developer() {
-        isUsed = false;
+    public Developer() {  used = false;
     }
 
     public Developer(ArrayList<String> skills) {
-        isUsed = false;
+        used = false;
         this.skills = skills;
     }
 

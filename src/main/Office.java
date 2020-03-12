@@ -38,7 +38,6 @@ public class Office  {
         if (instance == null) {
             instance = new Office(0, 0);
         }
-        int pula;
         return instance;
     }
 
