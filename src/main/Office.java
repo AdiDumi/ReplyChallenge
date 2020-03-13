@@ -109,7 +109,7 @@ public class Office  {
             return true;
         }
 
-        return matrix.get(x).get(y) == '#' || matrixPerson != null;
+        return matrix.get(x).get(y) == '#' || matrixPerson[x][y] != null;
     }
 
     public void placePerson(Person person, int x, int y) {
